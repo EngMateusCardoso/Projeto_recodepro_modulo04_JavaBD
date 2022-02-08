@@ -14,8 +14,12 @@ public class Program {
 			
 			System.out.println("Digite uma das opções: ");
 			System.out.println("0 - Sair");
-			System.out.println("1 - Cadastrar Destino");
-			System.out.println("2 - Cadastrar mensagem de contato");
+			System.out.println("1 - Cadastrar Destino (Create)");
+			System.out.println("2 - Mostrar viagens cadastradas (Read)");
+			System.out.println("3 - Atualizar Destino (Update)");
+			System.out.println("4 - Cadastrar mensagem de contato (Create)");
+			System.out.println("5 - Mostrar mensagens de contato (Read)");
+			System.out.println("6 - Atualizar mensagem de contato (Update)");
 			
 			opcao = Integer.parseInt(sc.nextLine());
 					
@@ -30,7 +34,19 @@ public class Program {
 					agendamento.save();
 					break;
 				case 2:
+					agendamento.read();
+					break;
+				case 3:
+					agendamento.update();
+					break;
+				case 4:
 					msg.save();
+					break;
+				case 5:
+					msg.read();
+					break;
+				case 6:
+					msg.update();
 					break;
 				default:
 					System.out.println("opção invalida!");
