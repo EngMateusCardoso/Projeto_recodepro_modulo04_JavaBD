@@ -123,4 +123,36 @@ public class ContatoServices {
 			System.out.println(ex.getMessage());
 		}
 	}
+	
+	public void delete() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		Cadastro_Mensagem_Contato msg = new Cadastro_Mensagem_Contato();
+		
+		System.out.println("Digite o ID que deseja apagar: ");
+		msg.setId_Msg(Integer.parseInt(sc.nextLine()));
+		
+		String sql ="DELETE FROM Cadastro_Mensagem_Contato WHERE id_Msg = ?;";
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		try {
+			conn = ConexaoComBanco.createConnection();
+			pstm = conn.prepareStatement(sql);
+
+			pstm.setInt(1, msg.getId_Msg());
+			
+			pstm.execute();
+			
+			System.out.println("Mensagem Apagada com Sucesso!");
+			
+			conn.close();
+			pstm.close();
+			
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
 }

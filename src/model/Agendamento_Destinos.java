@@ -58,7 +58,4 @@ public class Agendamento_Destinos {
 	public void setFormaPagamento(String formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
-	
-	
-	
 }

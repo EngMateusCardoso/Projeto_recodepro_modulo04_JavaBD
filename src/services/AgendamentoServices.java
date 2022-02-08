@@ -140,4 +140,36 @@ public class AgendamentoServices {
 			System.out.println(ex.getMessage());
 		}
 	}
+	
+	public void delete() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		Agendamento_Destinos agendamento = new Agendamento_Destinos();
+		
+		System.out.println("Digite o ID que deseja apagar: ");
+		agendamento.setId_Agendamento(Integer.parseInt(sc.nextLine()));
+		
+		String sql ="DELETE FROM Agendamento_Destinos WHERE Id_Agendamento = ?;";
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		try {
+			conn = ConexaoComBanco.createConnection();
+			pstm = conn.prepareStatement(sql);
+
+			pstm.setInt(1, agendamento.getId_Agendamento());
+			
+			pstm.execute();
+			
+			System.out.println("Agendamento Apagado com Sucesso!");
+			
+			conn.close();
+			pstm.close();
+			
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
 }
